@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -55,6 +55,19 @@ model Token {
   userId Int
 
   @@unique([hashedToken, type])
+}
+
+model Task {
+  id          String   @id
+  name        String
+  type        String
+  description String?
+  status      String   @default("Backlog")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   String   @default("sysadmin")
+  updatedBy   String   @default("sysadmin")
 }
 
 // NOTE: It's highly recommended to use an enum for the token type

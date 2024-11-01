@@ -8,10 +8,10 @@ export const CreateTaskSchema = z.object({
 })
 export const UpdateTaskSchema = CreateTaskSchema.merge(
   z.object({
-    id: z.number(),
+    id: z.string(),
   })
 )
 
 export const DeleteTaskSchema = z.object({
-  id: z.number(),
+  id: z.string(),
 })

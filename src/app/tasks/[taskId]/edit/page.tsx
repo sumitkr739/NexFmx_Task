@@ -9,7 +9,7 @@ type EditTaskPageProps = {
 }
 
 export async function generateMetadata({ params }: EditTaskPageProps): Promise<Metadata> {
-  const Task = await invoke(getTask, { id: Number(params.taskId) })
+  const Task = await invoke(getTask, { id: String(params.taskId) })
   return {
     title: `Edit Task ${Task.id} - ${Task.name}`,
   }
@@ -19,7 +19,7 @@ export default async function Page({ params }: EditTaskPageProps) {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <EditTask taskId={Number(params.taskId)} />
+        <EditTask taskId={params.taskId} />
       </Suspense>
     </div>
   )

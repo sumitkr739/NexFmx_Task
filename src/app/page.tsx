@@ -4,13 +4,13 @@ import { LogoutButton } from "./(auth)/components/LogoutButton"
 import styles from "./styles/Home.module.css"
 import getCurrentUser from "./users/queries/getCurrentUser"
 
-export default async function Home() {
-  const currentUser = await invoke(getCurrentUser, null)
+// app/pages/index.tsx
+const Home = () => {
   return (
-    <>
-      <main className="flex items-center justify-center h-screen">
-        <h1 className="text-3xl font-bold">Hello, World!</h1>
-      </main>
-    </>
+    <div className="flex items-center justify-center h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold text-blue-600">Welcome to My Blitz.js App</h1>
+    </div>
   )
 }
+
+export default Home

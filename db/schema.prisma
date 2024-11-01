@@ -58,7 +58,7 @@ model Token {
 }
 
 model Task {
-  id          String   @id
+  id          String   @id @default(uuid())
   name        String
   type        String
   description String?

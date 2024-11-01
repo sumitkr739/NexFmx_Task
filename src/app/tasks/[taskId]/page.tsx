@@ -6,7 +6,7 @@ import getTask from "../queries/getTask"
 import { Task } from "../components/Task"
 
 export async function generateMetadata({ params }: TaskPageProps): Promise<Metadata> {
-  const Task = await invoke(getTask, { id: Number(params.taskId) })
+  const Task = await invoke(getTask, { id: String(params.taskId) })
   return {
     title: `Task ${Task.id} - ${Task.name}`,
   }
@@ -23,7 +23,7 @@ export default async function Page({ params }: TaskPageProps) {
         <Link href={"/tasks"}>Tasks</Link>
       </p>
       <Suspense fallback={<div>Loading...</div>}>
-        <Task taskId={Number(params.taskId)} />
+        <Task taskId={params.taskId} />
       </Suspense>
     </div>
   )

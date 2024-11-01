@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import deleteTask from "../mutations/deleteTask"
 import getTask from "../queries/getTask"
 
-export const Task = ({ taskId }: { taskId: number }) => {
+export const Task = ({ taskId }: { taskId: string }) => {
   const router = useRouter()
   const [deleteTaskMutation] = useMutation(deleteTask)
   const [task] = useQuery(getTask, { id: taskId })

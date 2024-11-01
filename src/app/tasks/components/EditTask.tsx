@@ -7,7 +7,7 @@ import { FORM_ERROR, TaskForm } from "./TaskForm"
 import { useMutation, useQuery } from "@blitzjs/rpc"
 import { useRouter } from "next/navigation"
 
-export const EditTask = ({ taskId }: { taskId: number }) => {
+export const EditTask = ({ taskId }: { taskId: string }) => {
   const [task, { setQueryData }] = useQuery(
     getTask,
     { id: taskId },

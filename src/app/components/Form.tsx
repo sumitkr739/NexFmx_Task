@@ -30,6 +30,7 @@ export function Form<S extends z.ZodType<any, any>>({
   ...props
 }: FormProps<S>) {
   const [formError, setFormError] = useState<string | null>(null)
+
   return (
     <Formik
       initialValues={initialValues || {}}
@@ -47,18 +48,24 @@ export function Form<S extends z.ZodType<any, any>>({
       }}
     >
       {({ handleSubmit, isSubmitting }) => (
-        <form onSubmit={handleSubmit} className="form" {...props}>
+        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6" {...props}>
           {/* Form fields supplied as children are rendered here */}
           {children}
 
           {formError && (
-            <div role="alert" style={{ color: "red" }}>
+            <div role="alert" className="text-red-600 font-semibold mt-4">
               {formError}
             </div>
           )}
 
           {submitText && (
-            <button type="submit" disabled={isSubmitting}>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`mt-4 w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-500 transition duration-200 ${
+                isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
               {submitText}
             </button>
           )}

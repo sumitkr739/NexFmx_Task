@@ -11,12 +11,16 @@ export const Task = ({ taskId }: { taskId: string }) => {
   const [task] = useQuery(getTask, { id: taskId })
 
   return (
-    <>
-      <div>
-        <h1>Project {task.id}</h1>
-        <pre>{JSON.stringify(task, null, 2)}</pre>
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+      <h1 className="text-3xl font-bold mb-4">Project {task.id}</h1>
+      <pre className="bg-gray-100 p-4 rounded-md overflow-auto">
+        {JSON.stringify(task, null, 2)}
+      </pre>
 
-        <Link href={`/tasks/${task.id}/edit`}>Edit</Link>
+      <div className="mt-6">
+        <Link href={`/tasks/${task.id}/edit`} className="text-blue-600 hover:underline">
+          Edit
+        </Link>
 
         <button
           type="button"
@@ -26,11 +30,11 @@ export const Task = ({ taskId }: { taskId: string }) => {
               router.push("/tasks")
             }
           }}
-          style={{ marginLeft: "0.5rem" }}
+          className="ml-4 bg-red-600 text-white py-2 px-4 rounded hover:bg-red-500 transition duration-200"
         >
           Delete
         </button>
       </div>
-    </>
+    </div>
   )
 }

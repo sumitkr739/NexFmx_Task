@@ -301,3 +301,9 @@
     flex-wrap: wrap;
   }
 }
+
+.header {
+  background-color: #f8f9fa; /* Light background color */
+  padding: 10px;
+  text-align: center;
+}

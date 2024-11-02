@@ -18,34 +18,35 @@ export const EditTask = ({ taskId }: { taskId: string }) => {
   )
   const [updateTaskMutation] = useMutation(updateTask)
   const router = useRouter()
+
   return (
-    <>
-      <div>
-        <h1>Edit Task {task.id}</h1>
-        <pre>{JSON.stringify(task, null, 2)}</pre>
-        <Suspense fallback={<div>Loading...</div>}>
-          <TaskForm
-            submitText="Update Task"
-            schema={UpdateTaskSchema}
-            initialValues={task}
-            onSubmit={async (values) => {
-              try {
-                const updated = await updateTaskMutation({
-                  ...values,
-                  id: task.id,
-                })
-                await setQueryData(updated)
-                router.refresh()
-              } catch (error: any) {
-                console.error(error)
-                return {
-                  [FORM_ERROR]: error.toString(),
-                }
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+      <h1 className="text-3xl font-bold mb-6">Edit Task {task.id}</h1>
+      <pre className="bg-gray-100 p-4 rounded-md overflow-auto mb-4">
+        {JSON.stringify(task, null, 2)}
+      </pre>
+      <Suspense fallback={<div className="text-center text-gray-500">Loading form...</div>}>
+        <TaskForm
+          submitText="Update Task"
+          schema={UpdateTaskSchema}
+          initialValues={task}
+          onSubmit={async (values) => {
+            try {
+              const updated = await updateTaskMutation({
+                ...values,
+                id: task.id,
+              })
+              await setQueryData(updated)
+              router.refresh()
+            } catch (error: any) {
+              console.error(error)
+              return {
+                [FORM_ERROR]: error.toString(),
               }
-            }}
-          />
-        </Suspense>
-      </div>
-    </>
+            }
+          }}
+        />
+      </Suspense>
+    </div>
   )
 }

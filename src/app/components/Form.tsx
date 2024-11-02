@@ -5,6 +5,11 @@ import { z } from "zod"
 
 export interface FormProps<S extends z.ZodType<any, any>>
   extends Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit"> {
+  register(
+    arg0: string
+  ): JSX.IntrinsicAttributes &
+    import("react").ClassAttributes<HTMLSelectElement> &
+    import("react").SelectHTMLAttributes<HTMLSelectElement>
   /** All your form fields */
   children?: ReactNode
   /** Text to display in the submit button */

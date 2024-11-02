@@ -37,7 +37,7 @@ export const EditTask = ({ taskId }: { taskId: string }) => {
                 id: task.id,
               })
               await setQueryData(updated)
-              router.refresh()
+              router.push(`/tasks`)
             } catch (error: any) {
               console.error(error)
               return {

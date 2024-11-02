@@ -61,6 +61,13 @@ export const LoginForm = (props: LoginFormProps) => {
               }
             }
           }}
+          register={function (
+            arg0: string
+          ): JSX.IntrinsicAttributes &
+            import("react").ClassAttributes<HTMLSelectElement> &
+            import("react").SelectHTMLAttributes<HTMLSelectElement> {
+            throw new Error("Function not implemented.")
+          }}
         >
           <LabeledTextField name="email" label="Email" placeholder="Email" className="mb-4" />
           <LabeledTextField
